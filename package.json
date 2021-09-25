@@ -20,6 +20,7 @@
     "url": "https://github.com/maayazed/react-collab-final/issues"
   },
   "dependencies": {
-    "concurrently": "^6.2.1"
+    "concurrently": "^6.2.1",
+    "react-bootstrap": "^1.6.4"
   }
 }
