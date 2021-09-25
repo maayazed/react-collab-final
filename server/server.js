@@ -1,19 +1,24 @@
 const express = require('express');
-// const { ApolloServer } = require('apollo-server-express');
+const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 
 const db = require('./config/connection');
 // schemas (typeDefs, resolvers)
-// authentication middleware
+const { authMiddleware } = require('./utils/auth');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// make server with apollo
-// apply server middleware
+const server = new ApolloServer({
+  // typeDefs,
+  // resolvers,
+  context: authMiddleware,
+});
 
-// using MERN not Restful, so extended: false, not using express routing
-app.use(express.urlencoded({ extended: false }));
+server.applyMiddleware({ app });
+
+// https://medium.com/@mmajdanski/express-body-parser-and-why-may-not-need-it-335803cd048c
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // if we're in production, serve client/build as static assets
