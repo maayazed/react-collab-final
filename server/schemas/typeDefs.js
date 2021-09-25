@@ -5,10 +5,18 @@ const typeDefs = gql`
 type User {
     _id: ID
     email: String
+    password: String
+}
+
+type Library {
+    _id: ID
+    location: String
+    currentBooks: [Book]!
 }
 
 type Book {
     _id: ID
+    bookId: String
     title: String
     authors: Array
     description: String
@@ -16,28 +24,20 @@ type Book {
     link: String
 }
 
-type Library {
-    _id: ID
-    location: String
-    currentBooks: Array
-}
-
 type Auth {
-    token: ID
+    token: ID!
     user: User
 }
 
 type Query {
     users : [User]
-    books : [Book]
-    libraries: [Library]
-    book(id: Int!): Book
     library(id: Int!): Library
+    libraries: [Library]
 }
 
 type Mutation {
     addUser(email: String!, password:String!): Auth
-    addBook(title: String!, authors: Array!, description: String!, image: String!, link: String!): Library
+    addBook(bookId: String!, title: String!, authors: Array!, description: String!, image: String!, link: String!): Library
     login(email: String!, password: String!): Auth
     removeBook(libraryId: ID!, bookId: ID!): Library
 }

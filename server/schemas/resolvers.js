@@ -1,26 +1,18 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Book, Library } = require('../models');
+const { User, Library } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
 
     Query: {
         users: async () => User.find(),
-        
-        books: async () => Book.find(),
 
-        libraries: async ()=> Library.find(),
-
-        book: async (parent, args) => {
-            return await Book.findById(args.id);
+        library: async (parent, { libraryId }) => {
+          return Library.findOne({ _id: libraryId });
         },
         
-        library: async (parent, args) => {
-            return await Library.findById(args.id).populate({
-                path: 'libaries.currentBooks',
-                populate: 'book',
-            });
-        }
+        libraries: async ()=> Library.find(),
+
     },
 
     Mutation: {
@@ -30,13 +22,13 @@ const resolvers = {
             return { token, user };
           },
 
-          addBook: async (parent, { libraryId, title, authors, description, image, link }, context) => {
+          addBook: async (parent, { bookId, libraryId, title, authors, description, image, link }, context) => {
             if (context.user) {
               return Library.findOneAndUpdate(
                 { _id: libraryId },
                 {
                   $addToSet: {
-                    currentBooks: { title, authors, description, image, link },
+                    currentBooks: { bookId, title, authors, description, image, link },
                   },
                 },
                 {
@@ -81,12 +73,8 @@ const resolvers = {
               );
             }
             throw new AuthenticationError('You need to be logged in!');
-          },
-
-
-      
+          }, 
     }
-
 };
 
 module.exports = resolvers;
