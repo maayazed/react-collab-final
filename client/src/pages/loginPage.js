@@ -15,10 +15,10 @@ const loginPage = () => {
       <h1>Login or Signup </h1>
       <Button onClick={() => setShowForm('login')} >Login </Button>
       <Button onClick={() => setShowForm('signUp')} >Sign Up</Button>
+      {showForm ?
+        <Button onClick={() => setShowForm('')} >Close</Button>
+        : null}
       <Container>
-        {showForm ?
-          <Button onClick={() => setShowForm('')} >Close</Button>
-          : null}
         {showForm === 'login' &&
           < SignupForm />}
         {showForm === 'signUp' &&
