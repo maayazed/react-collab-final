@@ -1,22 +1,28 @@
-import React from 'react';
-// import { Link } from 'react-router-dom';
-import { Container, Button } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Button, Container } from 'react-bootstrap';
 
 import SignupForm from '../components/SignupForm';
 import LoginForm from '../components/LoginForm';
 
 const loginPage = () => {
-  // const [showForm, setShowForm] = useState(false);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [showForm, setShowForm] = useState('');
 
   return (
     <>
       {/* display looks like a door, once authorized user can enter */}
+      {/* Finish state buttons to hide and show forms on click */}
+      <h1>Login or Signup </h1>
+      <Button onClick={() => setShowForm('login')} >Login </Button>
+      <Button onClick={() => setShowForm('signUp')} >Sign Up</Button>
       <Container>
-        <h1> Login or Signup </h1>
-        <Button>Login</Button>
-        <Button>Signup</Button>
-        <SignupForm />
-        <LoginForm />
+        {showForm ?
+          <Button onClick={() => setShowForm('')} >Close</Button>
+          : null}
+        {showForm === 'login' &&
+          < SignupForm />}
+        {showForm === 'signUp' &&
+          <LoginForm />}
       </Container>
     </>
   );
