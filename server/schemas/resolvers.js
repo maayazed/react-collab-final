@@ -22,6 +22,11 @@ const resolvers = {
             return { token, user };
           },
 
+          addLibrary: async (parent, { location, currentBooks }) => {
+            const library = await Library.create({ location, currentBooks });
+            return { library };
+          },
+
           addBook: async (parent, { bookId, libraryId, title, authors, description, image, link }, context) => {
             if (context.user) {
               return Library.findOneAndUpdate(
@@ -65,7 +70,7 @@ const resolvers = {
                 {
                   $pull: {
                     currentBooks: {
-                      _id: bookId,
+                      bookId: bookId,
                     },
                   },
                 },
