@@ -1,21 +1,21 @@
 const express = require('express');
-// const { ApolloServer } = require('apollo-server-express');
+const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 
 const db = require('./config/connection');
-// schemas (typeDefs, resolvers)
+const { typeDefs, resolvers } = require('./schemas');
 // const { authMiddleware } = require('./utils/auth');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// const server = new ApolloServer({
-//   // typeDefs,
-//   // resolvers,
+const server = new ApolloServer({
+    typeDefs,
+    resolvers,
 //   context: authMiddleware,
-// });
+});
 
-// server.applyMiddleware({ app });
+server.applyMiddleware({ app });
 
 // https://medium.com/@mmajdanski/express-body-parser-and-why-may-not-need-it-335803cd048c
 app.use(express.urlencoded({ extended: true }));

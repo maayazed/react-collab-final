@@ -11,14 +11,14 @@ type User {
 type Library {
     _id: ID
     location: String
-    currentBooks: [Book]!
+    currentBooks: [Book]
 }
 
 type Book {
     _id: ID
     bookId: String
     title: String
-    authors: Array
+    authors: [String]
     description: String
     image: String
     link: String
@@ -31,18 +31,19 @@ type Auth {
 
 type Query {
     users : [User]
-    library(id: Int!): Library
+    library(id: ID!): Library
     libraries: [Library]
 }
 
 type Mutation {
     addUser(email: String!, password:String!): Auth
-    addBook(bookId: String!, title: String!, authors: Array!, description: String!, image: String!, link: String!): Library
+    addBook(bookId: String!, libraryId: String!, title: String!, authors: [String]!, description: String!, image: String!, link: String!): Library
     login(email: String!, password: String!): Auth
-    removeBook(libraryId: ID!, bookId: ID!): Library
+    removeBook(libraryId: ID!, bookId: String!): Library
+    addLibrary(location: String!, currentBooks:[String]!):Library
 }
 
-`
+`;
 
 module.exports = typeDefs;
 
