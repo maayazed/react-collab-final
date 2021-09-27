@@ -1,0 +1,28 @@
+.jumbotron {
+  height: 50vh;
+  background-color: #c7eff0;
+  margin-bottom: 0;
+  /* padding: 10vh; */
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+}
+
+.fontLink {
+  font-family: "Prompt", sans-serif;
+  font-size: 15vh;
+  color: white;
+  margin-top: 1rem;
+  text-decoration: none;
+}
+
+.copyright {
+  margin-top: 10vh;
+  color: white;
+}
+
+.fontBody {
+  font-family: "Prompt", sans-serif;
+}

@@ -6,10 +6,18 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+// Pages
+import Homepage from "./pages/Homepage";
 import loginPage from "./pages/loginPage";
+// import Library from "./pages/Library";
+//Components
+import Navbar from "./components/Navbar";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
+// Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
@@ -30,12 +38,28 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+const homeStyle = {
+  border: "solid #a76e0a 5vh",
+};
+
 function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
         <>
-          <Route exact path="/" component={loginPage} />
+          <Header />
+          <Navbar />
+          <div style={homeStyle}>
+            <Switch>
+              <Route exact path="/" component={Homepage} />
+              <Route exact path="/login" component={loginPage} />
+              {/* <Route exact path="/library" component={Library} /> */}
+              <Route
+                render={() => <h1 className="display-2">Wrong page!</h1>}
+              />
+            </Switch>
+          </div>
+          <Footer />
         </>
       </Router>
     </ApolloProvider>

@@ -1,31 +1,28 @@
 import React, { useState } from "react";
+import { Jumbotron, Container, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-import background from "./img/TEST.svg";
-// import sign from "./img/SIGN.png";
+import background from "../img/Roof.png";
 
 function Header() {
-  const mystyle = {
-    backgroundImage: `url(${background})`,
+  const headerStyle = {
+    minHeight: "20vh",
+    backgroundImage: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)), url(${background})`,
     backgroundRepeat: "no-repeat",
-    backgroundAttachment: "fixed",
-    backgroundSize: "100% 100%",
-    textAlign: "center",
+    backgroundSize: "100% 50vh",
+    backgroundPosition: "center top",
   };
 
   return (
-    <div>
-      <Card className="bg-dark text-white">
-        <Card.Img src="holder.js/100px270" alt="Card image" />
-        <Card.ImgOverlay>
-          <Card.Title>Little Local Library</Card.Title>
-          <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
-          </Card.Text>
-          <Card.Text>Last updated 3 mins ago</Card.Text>
-        </Card.ImgOverlay>
-      </Card>
-    </div>
+    <Jumbotron fluid style={headerStyle} className="jumbotron">
+      <Container className="d-flex justify-content-md-center">
+        <Row className="d-flex justify-content-md-center">
+          <Link to="/">
+            <p className="fontLink">Little Local Library</p>
+          </Link>
+        </Row>
+      </Container>
+    </Jumbotron>
   );
 }
 
