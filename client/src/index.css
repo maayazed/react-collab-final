@@ -26,3 +26,72 @@
 .fontBody {
   font-family: "Prompt", sans-serif;
 }
+
+body {
+  font-family: 'Baskervville', serif;
+}
+
+h2 {
+  font-size: 40px;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Baskervville', serif;
+}
+
+h3 {
+  margin-top: 10px;
+  font-size: 26px;
+}
+
+.small {
+  font-size: small;
+  font-style: italic;
+  font-family: 'Baskervville', serif;
+}
+
+.bookcover {
+  height: 60px;
+  /* background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #fff; */
+}
+
+
+.booktitle {
+  font-size: small;
+  font-family: 'Roboto Slab', sans-serif;
+}
+
+/* .wheat {
+  background-color: rgb(245, 236, 220);
+} */
+
+.blue {
+  background-color: #394261;
+}
+
+.spacebefore {
+  margin-top: 10px;
+}
+
+.space {
+  margin-left: 5px;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .booktitle {
+    font-size: x-small;
+  }
+  .small {
+    font-size: x-small;
+  }
+
+  .bookcover {
+    height: 80px;
+  }
+}
