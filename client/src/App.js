@@ -11,7 +11,9 @@ import {
 // Pages
 import Homepage from "./pages/Homepage";
 import loginPage from "./pages/loginPage";
-// import Library from "./pages/Library";
+import Library from "./pages/Library";
+import AddBook from "./pages/AddBook";
+
 //Components
 import Navbar from "./components/Navbar";
 import Header from "./components/Header";
@@ -53,7 +55,8 @@ function App() {
             <Switch>
               <Route exact path="/" component={Homepage} />
               <Route exact path="/login" component={loginPage} />
-              {/* <Route exact path="/library" component={Library} /> */}
+              <Route exact path="/library" component={Library} />
+              <Route exact path="/addbook" component={AddBook} />
               <Route
                 render={() => <h1 className="display-2">Wrong page!</h1>}
               />
