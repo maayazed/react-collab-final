@@ -18,7 +18,7 @@ function Header() {
       <Container className="d-flex justify-content-md-center">
         <Row className="d-flex justify-content-md-center">
           <Link to="/">
-            <p className="fontLink">Little Local Library</p>
+            <p className="fontLink">Little Lending Library</p>
           </Link>
         </Row>
       </Container>

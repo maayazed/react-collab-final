@@ -30,8 +30,9 @@ type Auth {
 }
 
 type Query {
+    user(userId: ID!): User
     users : [User]
-    library(id: ID!): Library
+    library(libraryId: ID!): Library
     libraries: [Library]
 }
 
