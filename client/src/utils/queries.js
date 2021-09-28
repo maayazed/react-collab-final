@@ -7,6 +7,9 @@ export const QUERY_LIBRARY = gql`
       }
   }
 `
+//Example Query Variables
+// {"libraryId": "<library id here>"}
+
 
 export const QUERY_LIBRARIES = gql`
     query libraries{
@@ -22,8 +25,10 @@ export const QUERY_USER = gql`
           _id, email, password
         }
       }
-
 `
+//Example Query Variables
+// {"userId": "<user id here>"}
+
 
 export const QUERY_USERS = gql`
     query users{
