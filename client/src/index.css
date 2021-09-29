@@ -54,10 +54,9 @@ h3 {
 }
 
 .bookcover {
-  height: 60px;
-  /* background-repeat: no-repeat;
-  background-size: cover;
-  background-color: #fff; */
+  height: 65px;
+  width: 80%;
+  margin: 5px 5px 5px 2px;
 }
 
 
