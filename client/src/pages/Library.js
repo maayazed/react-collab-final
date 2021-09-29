@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, Button, Alert } from 'react-bootstrap';
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { useQuery, useMutation } from '@apollo/client';
 import { CREATE_BOOK } from '../utils/mutations';
@@ -10,7 +10,7 @@ import { searchGoogleBooks } from '../utils/API';
 import BookBackground from '../bluegraybook.png'
 
 import { addBookIds, getAddedBookIds } from '../utils/localStorage';
-import { QUERY_LIBRARIES } from '../utils/queries';
+import { QUERY_LIBRARY } from '../utils/queries';
 
 
 const bgimage = {
@@ -30,6 +30,13 @@ const Library = () => {
   const [addBook, { error }] = useMutation(CREATE_BOOK);
   // create state to hold saved bookId values
   const [addedBookIds, setAddedBookIds] = useState(getAddedBookIds());
+
+  //Query Information
+  const { libraryId } = useParams();
+  const { loading, data } = useQuery(QUERY_LIBRARY, {
+    variables: {libraryId: libraryId},
+  });
+  const library = data?.library || {};
 
   // set up useEffect hook to save `savedBookIds` list to localStorage on component unmount
   useEffect(() => {
@@ -98,6 +105,7 @@ const Library = () => {
     <div className="row py-lg-5">
       <Jumbotron fluid className='bg-light'>
         <Container>
+          <h1>{library.location}</h1>
           <h2>East Library <br />at 2017 Buford Ave.</h2>
           <p>See below for available books</p>
         </Container>

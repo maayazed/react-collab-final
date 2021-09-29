@@ -10,8 +10,7 @@ return (
     <div>
     {libraries && libraries.map((library)=>(
         <p>
-        <Link as={Link} to="/library">
-        {/* <Link as={Link} to={`/library/${library._id}`}> */}
+        <Link to={`/library/${library._id}`}>
             {library.location}
             </Link>
             </p>
