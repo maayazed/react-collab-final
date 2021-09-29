@@ -13,7 +13,6 @@ import { searchGoogleBooks } from '../utils/API';
 import { addBookIds, getAddedBookIds } from '../utils/localStorage';
 import { QUERY_LIBRARIES } from '../utils/queries';
 
-
 const booksbg = ["#E8A68E", "#FFCDAB", "#CBD9BF", "#ACCC7A5", "#A0C4FF", "#BDB2FF"];
 
 const Library = () => {
@@ -81,11 +80,7 @@ const Library = () => {
     }
 
     try {
-      await addBook({variables: { ...bookToAdd }});
-
-      // if (!response.ok) {
-      //   throw new Error('something went wrong!');
-      // }
+      await addBook({ variables: { ...bookToAdd } });
 
       setAddedBookIds([...addedBookIds, bookToAdd.bookId]);
     } catch (err) {
@@ -124,12 +119,12 @@ const Library = () => {
                   {/* {addedBookIds?.some((addedBookId) => addedBookId === book.bookId)
                     ? 'Book removed!'
                     : 'Take book'} */}
-                    See details
-                </Button>
-                <Button 
-                  key='addBook' className="space" variant='dark' size='sm'
-                  onClick={() => handleAddBook()}>
-                  {/* {addedBookIds?.some((addedBookId) => addedBookId === book.bookId)
+                      See details
+                    </Button>
+                    <Button
+                      key='addBook' className="space" variant='dark' size='sm'
+                      onClick={() => handleAddBook()}>
+                      {/* {addedBookIds?.some((addedBookId) => addedBookId === book.bookId)
                     ? 'Book removed!'
                     : 'Take book'} */}
                     Take book
@@ -137,10 +132,10 @@ const Library = () => {
               </Card>
             {/* )},
           )}   */}
-        </div>
-      </Container>
-    </Jumbotron>
-    </div></div>
+            </div>
+          </Container>
+        </Jumbotron>
+      </div></div>
   );
 }
 

@@ -77,11 +77,7 @@ const AddBook = () => {
     }
 
     try {
-      await addBook({variables: { ...bookToAdd }});
-
-      // if (!response.ok) {
-      //   throw new Error('something went wrong!');
-      // }
+      await addBook({ variables: { ...bookToAdd } });
 
       // if book successfully saves to user's account, save book id to state
       setAddedBookIds([...addedBookIds, bookToAdd.bookId]);
