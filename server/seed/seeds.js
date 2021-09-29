@@ -1,38 +1,17 @@
 //for library model
 
-const db = require('./connection');
-const {
-  Library,
-  Book
-} = require('../models');
-const bookSchema = require('../models/Book');
+const db = require('../config/connection');
+const { Library } = require('../models');
+const librarySeeds = require('./librarySeeds.json');
 
 db.once('open', async () => {
-  await Library.deleteMany();
+  try {
+    await Library.deleteMany({});
+    await Library.create(librarySeeds);
 
-  const library = await Library.insertMany([{
-      location: '2017 Buford St.',
-      currentBooks: [bookSchema],
-    },
-    {
-      location: '1920 Fitch Ave.',
-      currentBooks: [bookSchema],
-    },
-  ]);
-
-  console.log('libraries seeded');
-
-  await Book.deleteMany();
-
-  const books = await Book.insertMany([{
-    title: 'Title here',
-    authors: 'Author(s)',
-    description: 'Description',
-    image: 'image',
-    link: 'link',
-  }]);
-
-  console.log('initial books seeded');
-
-  process.exit();
+    console.log('initial libraries seeded');
+    process.exit(0);
+  } catch (err) {
+    throw err;
+  }
 });
