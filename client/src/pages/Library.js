@@ -18,8 +18,8 @@ const bgimage = {
 };
 
 const booksbg = {};
-  //randomcolor = ["#FFADAD", "#FFD6A5", "FDFFB6", "CAFFBF", "9BF6FF", "A0C4FF", "BDB2FF"], 
-  // background-color: randomcolor.map type function
+//randomcolor = ["#FFADAD", "#FFD6A5", "FDFFB6", "CAFFBF", "9BF6FF", "A0C4FF", "BDB2FF"], 
+// background-color: randomcolor.map type function
 //};
 
 const Library = () => {
@@ -81,11 +81,7 @@ const Library = () => {
     }
 
     try {
-      await addBook({variables: { ...bookToAdd }});
-
-      // if (!response.ok) {
-      //   throw new Error('something went wrong!');
-      // }
+      await addBook({ variables: { ...bookToAdd } });
 
       setAddedBookIds([...addedBookIds, bookToAdd.bookId]);
     } catch (err) {
@@ -95,53 +91,55 @@ const Library = () => {
 
   return (
     <div className="py-5 text-center container">
-    <div className="row py-lg-5">
-      <Jumbotron fluid className='bg-light'>
-        <Container>
-          <h2>East Library <br />at 2017 Buford Ave.</h2>
-          <p>See below for available books</p>
-        </Container>
-      <Container>
-      <Link to='/addbook'>
-      <button type="button" className="btn btn-danger">Add a book to this library</button>
-      </Link>
-        <div className='col-11 d-flex flex-direction-column-reverse spacebefore'>
-          {/* need to list books that exist in this library */}
-          {/* {searchedBooks.map((book) => {
+      <div className="row py-lg-5">
+        <Jumbotron fluid className='bg-light'>
+          <Container>
+            <h2>East Library <br />at 2017 Buford Ave.</h2>
+            <p>See below for available books</p>
+          </Container>
+          <Container>
+            {Auth.loggedIn() && (
+              <Link to='/addBook'>
+                <Button type="button" className="btn btn-danger">Add a book to this library</Button>
+              </Link>
+            )}
+            <div className='col-11 d-flex flex-direction-column-reverse spacebefore'>
+              {/* need to list books that exist in this library */}
+              {/* {searchedBooks.map((book) => {
             return ( */}
               <Alert variant="success" className='bookcover' style={booksbg}>
                 <div className="d-flex row align-items-center justify-content-space-evenly bookspacing">
-                <div className='col-4'>
-                {/* <Alert.Heading key={book.bookId} className='booktitle'>{book.title}</Alert.Heading> */}
-                  <Alert.Heading key="123" className='booktitle'>The Black Friend</Alert.Heading>
-                  {/* add function to limit title to xx characters */}
+                  <div className='col-4'>
+                    {/* <Alert.Heading key={book.bookId} className='booktitle'>{book.title}</Alert.Heading> */}
+                    <Alert.Heading key="123" className='booktitle'>The Black Friend</Alert.Heading>
+                    {/* add function to limit title to xx characters */}
                   </div>
-              <div className='col-3 small'>By: Frederick Joseph</div> 
-              {/* By: {book.authors} */}
-              <div className='col-5'>
-                <Button 
-                  key='bookDetails' variant='secondary' size='sm'
-                  onClick={() => handleAddBook()}>
-                  {/* {addedBookIds?.some((addedBookId) => addedBookId === book.bookId)
+                  <div className='col-3 small'>By: Frederick Joseph</div>
+                  {/* By: {book.authors} */}
+                  <div className='col-5'>
+                    <Button
+                      key='bookDetails' variant='secondary' size='sm'
+                      onClick={() => handleAddBook()}>
+                      {/* {addedBookIds?.some((addedBookId) => addedBookId === book.bookId)
                     ? 'Book removed!'
                     : 'Take book'} */}
-                    See details
-                </Button>
-                <Button 
-                  key='addBook' className="space" variant='dark' size='sm'
-                  onClick={() => handleAddBook()}>
-                  {/* {addedBookIds?.some((addedBookId) => addedBookId === book.bookId)
+                      See details
+                    </Button>
+                    <Button
+                      key='addBook' className="space" variant='dark' size='sm'
+                      onClick={() => handleAddBook()}>
+                      {/* {addedBookIds?.some((addedBookId) => addedBookId === book.bookId)
                     ? 'Book removed!'
                     : 'Take book'} */}
-                    Take book
-                </Button></div></div>
+                      Take book
+                    </Button></div></div>
               </Alert>
-            {/* )},
+              {/* )},
           )}   */}
-        </div>
-      </Container>
-    </Jumbotron>
-    </div></div>
+            </div>
+          </Container>
+        </Jumbotron>
+      </div></div>
   );
 }
 

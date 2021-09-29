@@ -16,8 +16,8 @@ const bgimage = {
 };
 
 const booksbg = {};
-  //randomcolor = ["#FFADAD", "#FFD6A5", "FDFFB6", "CAFFBF", "9BF6FF", "A0C4FF", "BDB2FF"], 
-  // background-color: randomcolor.map type function
+//randomcolor = ["#FFADAD", "#FFD6A5", "FDFFB6", "CAFFBF", "9BF6FF", "A0C4FF", "BDB2FF"], 
+// background-color: randomcolor.map type function
 //};
 
 const AddBook = () => {
@@ -79,11 +79,7 @@ const AddBook = () => {
     }
 
     try {
-      await addBook({variables: { ...bookToAdd }});
-
-      // if (!response.ok) {
-      //   throw new Error('something went wrong!');
-      // }
+      await addBook({ variables: { ...bookToAdd } });
 
       // if book successfully saves to user's account, save book id to state
       setAddedBookIds([...addedBookIds, bookToAdd.bookId]);
@@ -94,62 +90,63 @@ const AddBook = () => {
 
   return (
     <div className="py-5 container">
-    <div className="row py-lg-5">
-      <Jumbotron fluid className='bg-light'>
-        <Container>
-          <h2 className="text-center">Add a book to the library</h2>
-          <Form onSubmit={handleFormSubmit}>
-            <Form.Row className="d-flex flex-wrap">
-              <Col xs={12} md={6}>
-                <Form.Control
-                  name='searchInput'
-                  value={searchInput}
-                  onChange={(e) => setSearchInput(e.target.value)}
-                  type='text'
-                  size='med'
-                  placeholder='Enter book title'
-                />
-              </Col>
-              <Col xs={12} md={5}>
-                <Button type='submit' variant='danger' size='med'>
-                  Search
-                </Button>
-                <Link to='/library'>
-      <button type="button" className="btn btn-secondary space">Return to library</button>
-      </Link>
-              </Col>
-            </Form.Row>
-          </Form>
-        </Container>
-      <Container>
-        <h3 className="text-center">
-          {searchedBooks.length
-            ? `Results:`
-            : 'Search for a book to begin'}
-        </h3>
-        <div className='col-10'>
-          {searchedBooks.map((book) => {
-            return (
-              <Alert variant="success" className='bookcover' style={booksbg}>
-                <div className="d-flex row align-items-center justify-content-space-evenly">
-                  <div className='col-5'><Alert.Heading key={book.bookId} className='booktitle'>{book.title}</Alert.Heading></div>
-                  <div className='col-4 small'>By: {book.authors}</div>
-                  <div className='col-md-3'>
-                    <Button key='addBook' variant='dark' size='sm'
-                    onClick={() => handleAddBook(book.bookId)}>
-                    {addedBookIds?.some((addedBookId) => addedBookId === book.bookId)
-                    ? 'Book added!'
-                    : 'Add this book'}
-                    </Button>
-                  </div>
-                </div>
-              </Alert>
-            )},
-          )}  
-        </div>
-      </Container>
-    </Jumbotron>
-    </div></div>
+      <div className="row py-lg-5">
+        <Jumbotron fluid className='bg-light'>
+          <Container>
+            <h2 className="text-center">Add a book to the library</h2>
+            <Form onSubmit={handleFormSubmit}>
+              <Form.Row className="d-flex flex-wrap">
+                <Col xs={12} md={6}>
+                  <Form.Control
+                    name='searchInput'
+                    value={searchInput}
+                    onChange={(e) => setSearchInput(e.target.value)}
+                    type='text'
+                    size='med'
+                    placeholder='Enter book title'
+                  />
+                </Col>
+                <Col xs={12} md={5}>
+                  <Button type='submit' variant='danger' size='med'>
+                    Search
+                  </Button>
+                  <Link to='/library'>
+                    <button type="button" className="btn btn-secondary space">Return to library</button>
+                  </Link>
+                </Col>
+              </Form.Row>
+            </Form>
+          </Container>
+          <Container>
+            <h3 className="text-center">
+              {searchedBooks.length
+                ? `Results:`
+                : 'Search for a book to begin'}
+            </h3>
+            <div className='col-10'>
+              {searchedBooks.map((book) => {
+                return (
+                  <Alert variant="success" className='bookcover' style={booksbg}>
+                    <div className="d-flex row align-items-center justify-content-space-evenly">
+                      <div className='col-5'><Alert.Heading key={book.bookId} className='booktitle'>{book.title}</Alert.Heading></div>
+                      <div className='col-4 small'>By: {book.authors}</div>
+                      <div className='col-md-3'>
+                        <Button key='addBook' variant='dark' size='sm'
+                          onClick={() => handleAddBook(book.bookId)}>
+                          {addedBookIds?.some((addedBookId) => addedBookId === book.bookId)
+                            ? 'Book added!'
+                            : 'Add this book'}
+                        </Button>
+                      </div>
+                    </div>
+                  </Alert>
+                )
+              },
+              )}
+            </div>
+          </Container>
+        </Jumbotron>
+      </div></div>
   );
 }
 
