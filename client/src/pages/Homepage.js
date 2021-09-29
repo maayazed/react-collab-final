@@ -1,7 +1,12 @@
+import { useQuery } from "@apollo/client";
 import React from "react";
-import { Link } from "react-router-dom";
+import { QUERY_LIBRARIES } from '../utils/queries';
+import LibraryList from "../components/LibraryList";
 
 function Homepage() {
+  const { loading, data } = useQuery(QUERY_LIBRARIES);
+  const libraries = data?.libraries || [];
+
   return (
     <div className="py-5 text-center container">
       <div className="row py-lg-5">
@@ -12,11 +17,8 @@ function Homepage() {
             one of your own.
           </p>
           <div>
-            {/* This will be the map */}
-            <Link as={Link} to="/library">
-              Library One
-            </Link>
-            <p>Library Two</p>
+            {/*Could add something else here for when the libraries are loading if we want.*/}
+          <LibraryList libraries={libraries}/>
           </div>
         </div>
       </div>

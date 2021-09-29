@@ -56,7 +56,8 @@ function App() {
               <Route exact path="/" component={Homepage} />
               <Route exact path="/login" component={loginPage} />
               <Route exact path="/library" component={Library} />
-              <Route exact path="/addBook" component={AddBook} />
+              <Route exact path="/library/:libraryId" component={Library} />
+              <Route exact path="/addbook" component={AddBook} />
               <Route
                 render={() => <h1 className="display-2">Wrong page!</h1>}
               />
