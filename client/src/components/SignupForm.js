@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 
-// import Auth from '../utils/auth';
-// import { useMutation } from '@apollo/react-hooks';
+import Auth from '../utils/auth';
+import { useMutation } from '@apollo/react-hooks';
 // client side mutation for add a user
+import { CREATE_USER } from '../utils/mutations';
 
 const SignupForm = () => {
   // set initial form state
@@ -13,7 +14,7 @@ const SignupForm = () => {
   // set state for alert
   const [showAlert, setShowAlert] = useState(false);
 
-  // const [addUser, { error }] = useMutation(OUR_MUTATION);
+  const [addUser, { error }] = useMutation(CREATE_USER);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -30,21 +31,21 @@ const SignupForm = () => {
       event.stopPropagation();
     }
 
-    // try {
-    //   const { data } = await addUser({
-    //     variables: { ...userFormData }
-    //   });
+    try {
+      const { data } = await addUser({
+        variables: { ...userFormData }
+      });
 
-    //   if (error) {
-    //     throw new Error('Login failed!');
-    //   }
+      if (error) {
+        throw new Error('Login failed!');
+      }
 
-    //   console.log(data);
-    //   Auth.login(data.addUser.token);
-    // } catch (err) {
-    //   console.error(err);
-    //   setShowAlert(true);
-    // }
+      console.log(data);
+      Auth.login(data.addUser.token);
+    } catch (err) {
+      console.error(err);
+      setShowAlert(true);
+    }
 
     setUserFormData({
       email: '',
@@ -87,7 +88,7 @@ const SignupForm = () => {
           <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
         </Form.Group>
         <Button
-          disabled={!(userFormData.username && userFormData.email && userFormData.password)}
+          disabled={!(userFormData.email && userFormData.password)}
           type='submit'
           variant='success'>
           Submit

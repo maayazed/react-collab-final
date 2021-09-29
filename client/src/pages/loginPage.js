@@ -12,16 +12,16 @@ const loginPage = () => {
     <>
       {/* display looks like a door, once authorized user can enter */}
       {/* Finish state buttons to hide and show forms on click */}
-      <h1>Login or Signup </h1>
       <Button onClick={() => setShowForm('login')} >Login </Button>
+      <strong>Or</strong>
       <Button onClick={() => setShowForm('signUp')} >Sign Up</Button>
       {showForm ?
         <Button onClick={() => setShowForm('')} >Close</Button>
         : null}
       <Container>
-        {showForm === 'login' &&
-          < SignupForm />}
         {showForm === 'signUp' &&
+          < SignupForm />}
+        {showForm === 'login' &&
           <LoginForm />}
       </Container>
     </>
