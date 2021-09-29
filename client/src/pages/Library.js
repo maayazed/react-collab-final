@@ -90,33 +90,35 @@ const Library = () => {
 
   return (
     <div className="py-5 text-center container">
-    <div className="row py-lg-5">
-      <Jumbotron fluid className='bg-light'>
-        <Container>
-          <h2>East Library <br />at 2017 Buford Ave.</h2>
-          <p>See below for available books</p>
-        </Container>
-      <Container>
-      <Link to='/addbook'>
-      <button type="button" className="btn btn-danger">Add a book to this library</button>
-      </Link>
-        <div className='col-12 d-flex flex-direction-column-reverse spacebefore'>
-          {/* need to list books that exist in this library */}
-          {/* {searchedBooks.map((book) => {
+      <div className="row py-lg-5">
+        <Jumbotron fluid className='bg-light'>
+          <Container>
+            <h2>East Library <br />at 2017 Buford Ave.</h2>
+            <p>See below for available books</p>
+          </Container>
+          <Container>
+            {Auth.loggedIn() && (
+              <Link to='/addBook'>
+                <Button type="button" className="btn btn-danger">Add a book to this library</Button>
+              </Link>
+            )}
+            <div className='col-12 d-flex flex-direction-column-reverse spacebefore'>
+              {/* need to list books that exist in this library */}
+              {/* {searchedBooks.map((book) => {
             return ( */}
               <Card variant="primary" className='bookcover' style={{ backgroundColor: getBgColor() }}>
                 <Row className="d-flex row align-items-center justify-content-space-evenly spacebefore">
-                <Col className='col-4'>
-                  <CardTitle key="123" className='booktitle'>The Black Friend</CardTitle>
-                  {/* add function to limit title to xx characters */}
+                  <Col className='col-4'>
+                    <CardTitle key="123" className='booktitle'>The Black Friend</CardTitle>
+                    {/* add function to limit title to xx characters */}
                   </Col>
-              <Col className='col-3 small'>By: Frederick Joseph</Col> 
-              {/* By: {book.authors} */}
-              <Col className='col-5'>
-                <Button 
-                  key='bookDetails' variant='secondary' size='sm'
-                  onClick={() => handleAddBook()}>
-                  {/* {addedBookIds?.some((addedBookId) => addedBookId === book.bookId)
+                  <Col className='col-3 small'>By: Frederick Joseph</Col>
+                  {/* By: {book.authors} */}
+                  <Col className='col-5'>
+                    <Button
+                      key='bookDetails' variant='secondary' size='sm'
+                      onClick={() => handleAddBook()}>
+                      {/* {addedBookIds?.some((addedBookId) => addedBookId === book.bookId)
                     ? 'Book removed!'
                     : 'Take book'} */}
                       See details
@@ -127,10 +129,10 @@ const Library = () => {
                       {/* {addedBookIds?.some((addedBookId) => addedBookId === book.bookId)
                     ? 'Book removed!'
                     : 'Take book'} */}
-                    Take book
-                </Button></Col></Row>
+                      Take book
+                    </Button></Col></Row>
               </Card>
-            {/* )},
+              {/* )},
           )}   */}
             </div>
           </Container>
