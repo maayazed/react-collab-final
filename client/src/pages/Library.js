@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Jumbotron, Container, Button, Alert } from 'react-bootstrap';
+import { Jumbotron, Container, Button, Col, Row } from 'react-bootstrap';
+import { Card, CardTitle } from 'reactstrap';
+
 import { Link } from "react-router-dom";
 
 import { useQuery, useMutation } from '@apollo/client';
@@ -7,23 +9,14 @@ import { CREATE_BOOK } from '../utils/mutations';
 import '../index.css';
 import Auth from '../utils/auth';
 import { searchGoogleBooks } from '../utils/API';
-import BookBackground from '../bluegraybook.png'
 
 import { addBookIds, getAddedBookIds } from '../utils/localStorage';
 import { QUERY_LIBRARIES } from '../utils/queries';
 
-
-const bgimage = {
-  backgroundImage: `url(${BookBackground})`
-};
-
-const booksbg = {};
-//randomcolor = ["#FFADAD", "#FFD6A5", "FDFFB6", "CAFFBF", "9BF6FF", "A0C4FF", "BDB2FF"], 
-// background-color: randomcolor.map type function
-//};
+const booksbg = ["#E8A68E", "#FFCDAB", "#CBD9BF", "#ACCC7A5", "#A0C4FF", "#BDB2FF"];
 
 const Library = () => {
-  // create state for holding returned google api data
+  // create state for holding returned google api data 
   const [searchedBooks, setSearchedBooks] = useState([]);
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
@@ -68,6 +61,12 @@ const Library = () => {
     }
   };
 
+  //gets random color for book's background
+  const getBgColor = () => {
+    const i = Math.floor(Math.random() * booksbg.length);
+    return booksbg[i];
+  };
+
   // create function to handle saving added book to our database
   const handleAddBook = async (bookId) => {
     // find the book in `searchedBooks` state by the matching id
@@ -91,36 +90,33 @@ const Library = () => {
 
   return (
     <div className="py-5 text-center container">
-      <div className="row py-lg-5">
-        <Jumbotron fluid className='bg-light'>
-          <Container>
-            <h2>East Library <br />at 2017 Buford Ave.</h2>
-            <p>See below for available books</p>
-          </Container>
-          <Container>
-            {Auth.loggedIn() && (
-              <Link to='/addBook'>
-                <Button type="button" className="btn btn-danger">Add a book to this library</Button>
-              </Link>
-            )}
-            <div className='col-11 d-flex flex-direction-column-reverse spacebefore'>
-              {/* need to list books that exist in this library */}
-              {/* {searchedBooks.map((book) => {
+    <div className="row py-lg-5">
+      <Jumbotron fluid className='bg-light'>
+        <Container>
+          <h2>East Library <br />at 2017 Buford Ave.</h2>
+          <p>See below for available books</p>
+        </Container>
+      <Container>
+      <Link to='/addbook'>
+      <button type="button" className="btn btn-danger">Add a book to this library</button>
+      </Link>
+        <div className='col-12 d-flex flex-direction-column-reverse spacebefore'>
+          {/* need to list books that exist in this library */}
+          {/* {searchedBooks.map((book) => {
             return ( */}
-              <Alert variant="success" className='bookcover' style={booksbg}>
-                <div className="d-flex row align-items-center justify-content-space-evenly bookspacing">
-                  <div className='col-4'>
-                    {/* <Alert.Heading key={book.bookId} className='booktitle'>{book.title}</Alert.Heading> */}
-                    <Alert.Heading key="123" className='booktitle'>The Black Friend</Alert.Heading>
-                    {/* add function to limit title to xx characters */}
-                  </div>
-                  <div className='col-3 small'>By: Frederick Joseph</div>
-                  {/* By: {book.authors} */}
-                  <div className='col-5'>
-                    <Button
-                      key='bookDetails' variant='secondary' size='sm'
-                      onClick={() => handleAddBook()}>
-                      {/* {addedBookIds?.some((addedBookId) => addedBookId === book.bookId)
+              <Card variant="primary" className='bookcover' style={{ backgroundColor: getBgColor() }}>
+                <Row className="d-flex row align-items-center justify-content-space-evenly spacebefore">
+                <Col className='col-4'>
+                  <CardTitle key="123" className='booktitle'>The Black Friend</CardTitle>
+                  {/* add function to limit title to xx characters */}
+                  </Col>
+              <Col className='col-3 small'>By: Frederick Joseph</Col> 
+              {/* By: {book.authors} */}
+              <Col className='col-5'>
+                <Button 
+                  key='bookDetails' variant='secondary' size='sm'
+                  onClick={() => handleAddBook()}>
+                  {/* {addedBookIds?.some((addedBookId) => addedBookId === book.bookId)
                     ? 'Book removed!'
                     : 'Take book'} */}
                       See details
@@ -131,10 +127,10 @@ const Library = () => {
                       {/* {addedBookIds?.some((addedBookId) => addedBookId === book.bookId)
                     ? 'Book removed!'
                     : 'Take book'} */}
-                      Take book
-                    </Button></div></div>
-              </Alert>
-              {/* )},
+                    Take book
+                </Button></Col></Row>
+              </Card>
+            {/* )},
           )}   */}
             </div>
           </Container>

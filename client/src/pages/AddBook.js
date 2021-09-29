@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Jumbotron, Container, Col, Form, Button, Alert } from 'react-bootstrap';
+import { Jumbotron, Container, Col, Form, Button, Row, Alert } from 'react-bootstrap';
+import { Card, CardTitle } from 'reactstrap';
 import { Link } from "react-router-dom";
 
 import { useMutation } from '@apollo/client';
@@ -7,18 +8,10 @@ import { CREATE_BOOK } from '../utils/mutations';
 import '../index.css';
 import Auth from '../utils/auth';
 import { searchGoogleBooks } from '../utils/API';
-import BookBackground from '../bluegraybook.png'
 
 import { addBookIds, getAddedBookIds } from '../utils/localStorage';
 
-const bgimage = {
-  backgroundImage: `url(${BookBackground})`
-};
-
-const booksbg = {};
-//randomcolor = ["#FFADAD", "#FFD6A5", "FDFFB6", "CAFFBF", "9BF6FF", "A0C4FF", "BDB2FF"], 
-// background-color: randomcolor.map type function
-//};
+const booksbg = ["#E8A68E", "#FFCDAB", "#CBD9BF", "#ACCC7A5", "#A0C4FF", "#BDB2FF"];
 
 const AddBook = () => {
   // create state for holding returned google api data
@@ -65,6 +58,11 @@ const AddBook = () => {
       console.error(err);
     }
   };
+  //gets random color for book's background
+  const getBgColor = () => {
+    const i = Math.floor(Math.random() * booksbg.length);
+    return booksbg[i];
+  };
 
   // create function to handle saving added book to our database
   const handleAddBook = async (bookId) => {
@@ -89,64 +87,63 @@ const AddBook = () => {
   };
 
   return (
-    <div className="py-5 container">
-      <div className="row py-lg-5">
-        <Jumbotron fluid className='bg-light'>
-          <Container>
-            <h2 className="text-center">Add a book to the library</h2>
-            <Form onSubmit={handleFormSubmit}>
-              <Form.Row className="d-flex flex-wrap">
-                <Col xs={12} md={6}>
-                  <Form.Control
-                    name='searchInput'
-                    value={searchInput}
-                    onChange={(e) => setSearchInput(e.target.value)}
-                    type='text'
-                    size='med'
-                    placeholder='Enter book title'
-                  />
-                </Col>
-                <Col xs={12} md={5}>
-                  <Button type='submit' variant='danger' size='med'>
-                    Search
-                  </Button>
-                  <Link to='/library'>
-                    <button type="button" className="btn btn-secondary space">Return to library</button>
-                  </Link>
-                </Col>
-              </Form.Row>
-            </Form>
-          </Container>
-          <Container>
-            <h3 className="text-center">
-              {searchedBooks.length
-                ? `Results:`
-                : 'Search for a book to begin'}
-            </h3>
-            <div className='col-10'>
-              {searchedBooks.map((book) => {
-                return (
-                  <Alert variant="success" className='bookcover' style={booksbg}>
-                    <div className="d-flex row align-items-center justify-content-space-evenly">
-                      <div className='col-5'><Alert.Heading key={book.bookId} className='booktitle'>{book.title}</Alert.Heading></div>
-                      <div className='col-4 small'>By: {book.authors}</div>
-                      <div className='col-md-3'>
-                        <Button key='addBook' variant='dark' size='sm'
-                          onClick={() => handleAddBook(book.bookId)}>
-                          {addedBookIds?.some((addedBookId) => addedBookId === book.bookId)
-                            ? 'Book added!'
-                            : 'Add this book'}
-                        </Button>
-                      </div>
-                    </div>
-                  </Alert>
-                )
-              },
-              )}
-            </div>
-          </Container>
-        </Jumbotron>
-      </div></div>
+    <div className="py-5 text-center container">
+    <div className="row py-lg-5">
+      <Jumbotron fluid className='bg-light'>
+        <Container>
+          <h2 className="text-center">Add a book to the library</h2>
+          <Form onSubmit={handleFormSubmit}>
+            <Form.Row className="d-flex flex-wrap">
+              <Col xs={12} md={6}>
+                <Form.Control
+                  name='searchInput'
+                  value={searchInput}
+                  onChange={(e) => setSearchInput(e.target.value)}
+                  type='text'
+                  size='med'
+                  placeholder='Enter book title'
+                />
+              </Col>
+              <Col xs={12} md={5}>
+                <Button type='submit' variant='danger' size='med'>
+                  Search
+                </Button>
+                <Link to='/library'>
+      <button type="button" className="btn btn-secondary space">Return to library</button>
+      </Link>
+              </Col>
+            </Form.Row>
+          </Form>
+        </Container>
+      <Container>
+        <h3 className="text-center">
+          {searchedBooks.length
+            ? `Results:`
+            : 'Search for a book to begin'}
+        </h3>
+        <div className='col'>
+          {searchedBooks.map((book) => {
+            return (
+              <Card className='bookcover' style={{ backgroundColor: getBgColor() }}>
+                <Row className="d-flex row align-items-center justify-content-space-evenly spacebefore">
+                  <Col className='col-4'><CardTitle key={book.bookId} className='booktitle'>{book.title}</CardTitle></Col>
+                  <Col className='col-3 small'>By: {book.authors}</Col>
+                  <Col className='col-5'>
+                    <Button key='addBook' variant='dark' size='sm'
+                    onClick={() => handleAddBook(book.bookId)}>
+                    {addedBookIds?.some((addedBookId) => addedBookId === book.bookId)
+                    ? 'Book added!'
+                    : 'Add this book'}
+                    </Button>
+                  </Col>
+                </Row>
+              </Card>
+            )},
+          )}  
+        </div>
+      </Container>
+    </Jumbotron>
+    </div></div>
   );
 }
 
