@@ -1,26 +1,30 @@
+/* Header Component */
 .jumbotron {
   height: 50vh;
   background-color: #c7eff0;
   margin-bottom: 0;
-  /* padding: 10vh; */
-}
-
-.title {
-  display: flex;
-  justify-content: center;
 }
 
 .fontLink {
   font-family: "Prompt", sans-serif;
-  font-size: 15vh;
+  font-size: 10vh;
   color: white;
-  margin-top: 1rem;
+  margin-top: 15vh;
   text-decoration: none;
+  text-align: center;
 }
 
+/* Footer Component */
 .copyright {
   margin-top: 10vh;
   color: white;
+  font-size: 2vh;
+}
+
+/* Add Book Page */
+.title {
+  display: flex;
+  justify-content: center;
 }
 
 .fontBody {
@@ -28,7 +32,7 @@
 }
 
 body {
-  font-family: 'Baskervville', serif;
+  font-family: "Baskervville", serif;
 }
 
 h2 {
@@ -39,7 +43,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Baskervville', serif;
+  font-family: "Baskervville", serif;
 }
 
 h3 {
@@ -50,7 +54,7 @@ h3 {
 .small {
   font-size: small;
   font-style: italic;
-  font-family: 'Baskervville', serif;
+  font-family: "Baskervville", serif;
 }
 
 .bookcover {
@@ -60,10 +64,9 @@ h3 {
   background-color: #fff; */
 }
 
-
 .booktitle {
   font-size: small;
-  font-family: 'Roboto Slab', sans-serif;
+  font-family: "Roboto Slab", sans-serif;
 }
 
 /* .wheat {
@@ -83,7 +86,6 @@ h3 {
 }
 
 @media only screen and (max-width: 768px) {
-
   .booktitle {
     font-size: x-small;
   }
