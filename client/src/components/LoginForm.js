@@ -78,6 +78,26 @@ const LoginForm = () => {
           </Form.Control.Feedback>
         </Form.Group>
 
+        {/* <Form.Group>
+          <FloatingLabel
+            controlId="floatingInput"
+            label="Email address"
+            className="mb-3"
+          >
+            <Form.Control
+              type="email"
+              placeholder="name@example.com"
+              name="email"
+              onChange={handleInputChange}
+              value={userFormData.email}
+              required
+            />
+            <Form.Control.Feedback type="invalid">
+              Email is required!
+            </Form.Control.Feedback>
+          </FloatingLabel>
+        </Form.Group> */}
+
         <Form.Group>
           <Form.Label htmlFor="password">Password</Form.Label>
           <Form.Control
