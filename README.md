@@ -45,9 +45,13 @@ _If the program was cloned, downloaded, and installed instead, get the applicati
 ## Contributors
 
 Maya Zed: [Github](https://github.com/maayazed)
+
 Scott Tessman: [Github](https://github.com/stessman)
+
 Amira Holden: [Github](https://github.com/amiracat)
+
 Mohamed Ahmed: [Github](https://github.com/MohamedAhmed24)
+
 Megan Steblay: [Github](https://github.com/msteblu)
 
 ## License
