@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import React, { useState } from "react";
+import { Form, Button, Alert } from "react-bootstrap";
 
-import Auth from '../utils/auth';
-import { useMutation } from '@apollo/react-hooks';
+import Auth from "../utils/auth";
+import { useMutation } from "@apollo/react-hooks";
 // client side mutation for add a user
-import { CREATE_USER } from '../utils/mutations';
+import { CREATE_USER } from "../utils/mutations";
 
 const SignupForm = () => {
   // set initial form state
-  const [userFormData, setUserFormData] = useState({ email: '', password: '' });
+  const [userFormData, setUserFormData] = useState({ email: "", password: "" });
   // set state for form validation
   const [validated] = useState(false);
   // set state for alert
@@ -33,11 +33,11 @@ const SignupForm = () => {
 
     try {
       const { data } = await addUser({
-        variables: { ...userFormData }
+        variables: { ...userFormData },
       });
 
       if (error) {
-        throw new Error('Login failed!');
+        throw new Error("Login failed!");
       }
 
       console.log(data);
@@ -48,51 +48,94 @@ const SignupForm = () => {
     }
 
     setUserFormData({
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     });
+  };
+
+  // Styling
+  const formStyle = {
+    marginBottom: "2vh",
+    marginLeft: "2vh",
+    marginRight: "2vh",
+    padding: "1.5vh",
+    border: "solid #483C32 1px",
+  };
+
+  const spaceStyle = {
+    padding: "1vh",
   };
 
   return (
     <>
       {/* This is needed for the validation functionality above */}
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+      <Form
+        noValidate
+        validated={validated}
+        onSubmit={handleFormSubmit}
+        style={formStyle}
+      >
         {/* show alert if server response is bad */}
-        <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
-          Something went wrong with your signup!
+        <Alert
+          // dismissible
+          // onClose={() => setShowAlert(false)}
+          show={showAlert}
+          variant="danger"
+          style={{ textAlign: "center" }}
+        >
+          <div className="d-flex justify-content-end">
+            <Button
+              onClick={() => setShowAlert(false)}
+              variant="outline-danger"
+            >
+              X
+            </Button>
+          </div>
+          <Alert.Heading>Something went wrong with your signup!</Alert.Heading>
         </Alert>
 
-        <Form.Group>
-          <Form.Label htmlFor='email'>Email</Form.Label>
+        <div style={{ textAlign: "center", padding: "1vh" }}>
+          <Form.Label>Welcome to Little Lending Library!</Form.Label>
+        </div>
+
+        <Form.Group style={spaceStyle}>
+          <Form.Label htmlFor="email">Email:</Form.Label>
           <Form.Control
-            type='email'
-            placeholder='Your email address'
-            name='email'
+            type="email"
+            placeholder="Your email address"
+            name="email"
             onChange={handleInputChange}
             value={userFormData.email}
             required
           />
-          <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">
+            Email is required!
+          </Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group>
-          <Form.Label htmlFor='password'>Password</Form.Label>
+        <Form.Group style={spaceStyle}>
+          <Form.Label htmlFor="password">Password:</Form.Label>
           <Form.Control
-            type='password'
-            placeholder='Your password'
-            name='password'
+            type="password"
+            placeholder="Your password"
+            name="password"
             onChange={handleInputChange}
             value={userFormData.password}
             required
           />
-          <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">
+            Password is required!
+          </Form.Control.Feedback>
         </Form.Group>
-        <Button
-          disabled={!(userFormData.email && userFormData.password)}
-          type='submit'
-          variant='success'>
-          Submit
-        </Button>
+        <div style={{ textAlign: "center", padding: "1vh" }}>
+          <Button
+            disabled={!(userFormData.email && userFormData.password)}
+            type="submit"
+            variant="outline-dark"
+          >
+            Submit
+          </Button>
+        </div>
       </Form>
     </>
   );

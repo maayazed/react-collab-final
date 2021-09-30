@@ -1,5 +1,5 @@
 /* Header Component */
-.jumbotron {
+.jumbotronHeader {
   height: 50vh;
   background-color: #c7eff0;
   margin-bottom: 0;
@@ -19,6 +19,15 @@
   margin-top: 10vh;
   color: white;
   font-size: 2vh;
+}
+
+/* Library List Page */
+.hovering {
+  color: #5c4033;
+}
+
+.hovering:hover {
+  color: orange;
 }
 
 /* Add Book Page */

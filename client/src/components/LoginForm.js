@@ -52,22 +52,56 @@ const LoginForm = () => {
     });
   };
 
+  // Styling
+  const formStyle = {
+    marginBottom: "2vh",
+    marginLeft: "2vh",
+    marginRight: "2vh",
+    padding: "1.5vh",
+    border: "solid #483C32 1px",
+  };
+
+  const spaceStyle = {
+    padding: "1vh",
+  };
+
   return (
     <>
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+      <Form
+        noValidate
+        validated={validated}
+        onSubmit={handleFormSubmit}
+        style={formStyle}
+      >
         <Alert
-          dismissible
-          onClose={() => setShowAlert(false)}
+          // dismissible
+          // onClose={() => setShowAlert(false)}
           show={showAlert}
           variant="danger"
+          style={{ textAlign: "center" }}
         >
-          Something went wrong with your login credentials!
+          <div className="d-flex justify-content-end">
+            <Button
+              onClick={() => setShowAlert(false)}
+              variant="outline-danger"
+            >
+              X
+            </Button>
+          </div>
+          <Alert.Heading>
+            Something went wrong with your login credentials!
+          </Alert.Heading>
         </Alert>
-        <Form.Group>
-          <Form.Label htmlFor="email">Email</Form.Label>
+
+        <div style={{ textAlign: "center", padding: "1vh" }}>
+          <Form.Label>Welcome Back!</Form.Label>
+        </div>
+
+        <Form.Group style={spaceStyle}>
+          <Form.Label htmlFor="email">Email:</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Your email"
+            placeholder="Your email address"
             name="email"
             onChange={handleInputChange}
             value={userFormData.email}
@@ -78,28 +112,8 @@ const LoginForm = () => {
           </Form.Control.Feedback>
         </Form.Group>
 
-        {/* <Form.Group>
-          <FloatingLabel
-            controlId="floatingInput"
-            label="Email address"
-            className="mb-3"
-          >
-            <Form.Control
-              type="email"
-              placeholder="name@example.com"
-              name="email"
-              onChange={handleInputChange}
-              value={userFormData.email}
-              required
-            />
-            <Form.Control.Feedback type="invalid">
-              Email is required!
-            </Form.Control.Feedback>
-          </FloatingLabel>
-        </Form.Group> */}
-
-        <Form.Group>
-          <Form.Label htmlFor="password">Password</Form.Label>
+        <Form.Group style={spaceStyle}>
+          <Form.Label htmlFor="password">Password:</Form.Label>
           <Form.Control
             type="password"
             placeholder="Your password"
@@ -112,13 +126,15 @@ const LoginForm = () => {
             Password is required!
           </Form.Control.Feedback>
         </Form.Group>
-        <Button
-          disabled={!(userFormData.email && userFormData.password)}
-          type="submit"
-          variant="success"
-        >
-          Submit
-        </Button>
+        <div style={{ textAlign: "center", padding: "1vh" }}>
+          <Button
+            disabled={!(userFormData.email && userFormData.password)}
+            type="submit"
+            variant="outline-dark"
+          >
+            Submit
+          </Button>
+        </div>
       </Form>
     </>
   );

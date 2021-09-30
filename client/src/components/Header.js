@@ -14,7 +14,7 @@ function Header() {
   };
 
   return (
-    <Jumbotron fluid style={headerStyle} className="jumbotron">
+    <Jumbotron fluid style={headerStyle} className="jumbotronHeader">
       <Container className="d-flex justify-content-md-center">
         <Row className="d-flex justify-content-md-center">
           <Link to="/" style={{ textDecoration: "none" }}>

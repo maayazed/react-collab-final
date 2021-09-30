@@ -61,6 +61,11 @@ function App() {
               <Route exact path="/" component={withRouter(Homepage)} />
               <Route exact path="/login" component={withRouter(loginPage)} />
               <Route exact path="/library" component={withRouter(Library)} />
+              <Route
+                exact
+                path="/library/:libraryId"
+                component={withRouter(Library)}
+              />
               <Route exact path="/addbook" component={withRouter(AddBook)} />
               <Route
                 render={() => <h1 className="display-2">Wrong page!</h1>}
