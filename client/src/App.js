@@ -1,6 +1,11 @@
 import React from "react";
 import { setContext } from "@apollo/client/link/context";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  withRouter,
+} from "react-router-dom";
 import {
   ApolloClient,
   InMemoryCache,
@@ -53,11 +58,15 @@ function App() {
           <Navbar />
           <div style={homeStyle}>
             <Switch>
-              <Route exact path="/" component={Homepage} />
-              <Route exact path="/login" component={loginPage} />
-              <Route exact path="/library" component={Library} />
-              <Route exact path="/library/:libraryId" component={Library} />
-              <Route exact path="/addbook" component={AddBook} />
+              <Route exact path="/" component={withRouter(Homepage)} />
+              <Route exact path="/login" component={withRouter(loginPage)} />
+              <Route exact path="/library" component={withRouter(Library)} />
+              <Route
+                exact
+                path="/library/:libraryId"
+                component={withRouter(Library)}
+              />
+              <Route exact path="/addbook" component={withRouter(AddBook)} />
               <Route
                 render={() => <h1 className="display-2">Wrong page!</h1>}
               />
