@@ -8,7 +8,7 @@ import { CREATE_USER } from "../utils/mutations";
 
 const SignupForm = () => {
   // set initial form state
-  const [userFormData, setUserFormData] = useState({ email: "", password: "" });
+  const [userFormData, setUserFormData] = useState({ userLibrary: "", email: "", password: "" });
   // set state for form validation
   const [validated] = useState(false);
   // set state for alert
@@ -48,6 +48,7 @@ const SignupForm = () => {
     }
 
     setUserFormData({
+      userLibrary: "",
       email: "",
       password: "",
     });
@@ -99,6 +100,21 @@ const SignupForm = () => {
         </div>
 
         <Form.Group style={spaceStyle}>
+          <Form.Label htmlFor="userLibrary">Little library label</Form.Label>
+          <Form.Control
+            type="userLibrary"
+            placeholder="Your little library name"
+            name="email"
+            onChange={handleInputChange}
+            value={userFormData.userLibrary}
+            required
+          />
+          <Form.Control.Feedback type="invalid">
+            Library name is required!
+          </Form.Control.Feedback>
+        </Form.Group>
+
+        <Form.Group style={spaceStyle}>
           <Form.Label htmlFor="email">Email:</Form.Label>
           <Form.Control
             type="email"
@@ -129,7 +145,7 @@ const SignupForm = () => {
         </Form.Group>
         <div style={{ textAlign: "center", padding: "1vh" }}>
           <Button
-            disabled={!(userFormData.email && userFormData.password)}
+            disabled={!(userFormData.userLibrary && userFormData.email && userFormData.password)}
             type="submit"
             variant="outline-dark"
           >

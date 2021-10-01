@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Card, CardTitle } from 'reactstrap';
-import { Jumbotron, Container, Button, Col, Row, Modal } from 'react-bootstrap';
+import { Button, Col, Row } from 'react-bootstrap';
 import '../index.css';
-import Auth from '../utils/auth';
 
-const booksbg = ["#E8A68E", "#FFCDAB", "#CBD9BF", "#ACC7A5", "#A0C4FF", "#BDB2FF"];
+const booksBg = ["#E8A68E", "#FFCDAB", "#CBD9BF", "#ACCC7A5", "#A0C4FF", "#BDB2FF"];
 
- 
-   //creating the pop-up modal for book details
+const BookList = ({ books }) => {
+  if (!books) {
+    return <h3>No Books Yet</h3>
+  }
+
+  //creating the pop-up modal for book details
    function BookModal(props) {
     return (
       <Modal
@@ -36,20 +39,19 @@ const BookList = ({books}) => {
         return <h3>No Books Yet</h3>
     }
 
-    //gets random color for book's background
+  //gets random color for book's background
   const getBgColor = () => {
-    const i = Math.floor(Math.random() * booksbg.length);
-    return booksbg[i];
+    const i = Math.floor(Math.random() * booksBg.length);
+    return booksBg[i];
   };
   
-
   // Gets all of the authors in the authors array and 
-  const authorsList = (authors) =>  {
-      let finalAuthorsList = '';
-      authors.forEach(element => {
-          finalAuthorsList = finalAuthorsList + ', ' + element;
-      });
-      return finalAuthorsList;
+  const authorsList = (authors) => {
+    let finalAuthorsList = '';
+    authors.forEach(element => {
+      finalAuthorsList = finalAuthorsList + ', ' + element;
+    });
+    return finalAuthorsList;
   }
 
 return (
@@ -79,11 +81,11 @@ return (
                 ? 'Book removed!'
                 : 'Take book'} */}
                 Take book
-            </Button></Col></Row>
-          </Card>
-    ))}
+              </Button></Col></Row>
+        </Card>
+      ))}
     </div>
-);
+  );
 };
 
 export default BookList;
