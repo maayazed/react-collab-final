@@ -4,6 +4,14 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 
 import Auth from "../utils/auth";
 
+const styles = {
+  overlayLinks: {
+      color: "brown",
+      textDecoration: "none",
+  }
+}
+
+
 const AppNavbar = () => {
   return (
     <>
