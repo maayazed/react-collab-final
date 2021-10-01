@@ -28,9 +28,8 @@ const AddBook = () => {
   const [searchedBooks, setSearchedBooks] = useState([]);
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
-
   // create state to hold mutation for adding book
-  // const [addBook] = useMutation(CREATE_BOOK);
+  const [addBook] = useMutation(CREATE_BOOK);
   // create state to hold saved bookId values
   const [addedBookIds, setAddedBookIds] = useState(getAddedBookIds());
 
@@ -79,7 +78,7 @@ const AddBook = () => {
   // create function to handle saving added book to our database
   const handleAddBook = async (bookId) => {
     // find the book in `searchedBooks` state by the matching id
-    // const bookToAdd = searchedBooks.find((book) => book.bookId === bookId);
+    const bookToAdd = searchedBooks.find((book) => book.bookId === bookId);
 
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -88,14 +87,17 @@ const AddBook = () => {
       return false;
     }
 
-    // try {
-    //   await addBook({ variables: { ...bookToAdd } });
+    try {
+      console.log(bookToAdd);
+      await addBook({
+        variables: { bookData: { ...bookToAdd } }
+      });
 
-    //   // if book successfully saves to user's account, save book id to state
-    //   setAddedBookIds([...addedBookIds, bookToAdd.bookId]);
-    // } catch (err) {
-    //   console.error(err);
-    // }
+      // if book successfully saves to user's account, save book id to state
+      setAddedBookIds([...addedBookIds, bookToAdd.bookId]);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -136,12 +138,13 @@ const AddBook = () => {
             <div className='col'>
               {searchedBooks.map((book) => {
                 return (
-                  <Card className='bookcover' style={{ backgroundColor: getBgColor() }}>
+                  <Card key={book.bookId} className='bookcover' style={{ backgroundColor: getBgColor() }}>
                     <Row className="d-flex row align-items-center justify-content-space-evenly spacebefore">
                       <Col className='col-4'><CardTitle key={book.bookId} className='booktitle'>{book.title}</CardTitle></Col>
                       <Col className='col-3 small'>By: {book.authors}</Col>
                       <Col className='col-5'>
                         <Button key='addBook' variant='dark' size='sm'
+                          disabled={addedBookIds?.some((savedBookId) => savedBookId === book.bookId)}
                           onClick={() => handleAddBook(book.bookId)}>
                           {addedBookIds?.some((addedBookId) => addedBookId === book.bookId)
                             ? 'Book added!'
