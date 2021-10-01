@@ -4,13 +4,13 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 
 import Auth from "../utils/auth";
 
+// integrated inLine react CSS
 const styles = {
   overlayLinks: {
-      color: "brown",
-      textDecoration: "none",
+    color: "brown",
+    textDecoration: "none",
   }
 }
-
 
 const AppNavbar = () => {
   return (
@@ -20,16 +20,13 @@ const AppNavbar = () => {
           <Navbar.Toggle aria-controls="navbar" />
           <Navbar.Collapse id="navbar">
             <Nav className="ml-auto">
-              {/* <Nav.Link as={Link} to="/">
-                Search For Books
-              </Nav.Link> */}
               {/* if user is logged in show saved books and logout */}
               {Auth.loggedIn() ? (
                 <>
-                  <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
+                  <Nav.Link styles={styles.overlayLinks} onClick={Auth.logout}>Logout</Nav.Link>
                 </>
               ) : (
-                <Nav.Link as={Link} to="/login">
+                <Nav.Link styles={styles.overlayLinks} as={Link} to="/login">
                   Login | Sign Up
                 </Nav.Link>
               )}
