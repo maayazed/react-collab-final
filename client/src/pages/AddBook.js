@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, Col, Form, Button, Row } from 'react-bootstrap';
 import { Card, CardTitle } from 'reactstrap';
-import { Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { CREATE_BOOK } from '../utils/mutations';
+import { QUERY_USERS } from '../utils/queries';
 import '../index.css';
 import Auth from '../utils/auth';
 import { searchGoogleBooks } from '../utils/API';
@@ -14,6 +15,15 @@ import { addBookIds, getAddedBookIds } from '../utils/localStorage';
 const booksBg = ["#E8A68E", "#FFCDAB", "#CBD9BF", "#ACCC7A5", "#A0C4FF", "#BDB2FF"];
 
 const AddBook = () => {
+  // set up route back
+  const userId = useParams();
+
+  const { data } = useQuery(QUERY_USERS, {
+    variables: { userId: userId },
+  });
+
+  const user = data?.user || {};
+
   // create state for holding returned google api data
   const [searchedBooks, setSearchedBooks] = useState([]);
   // create state for holding our search field data
@@ -110,7 +120,7 @@ const AddBook = () => {
                   <Button type='submit' variant='danger' size='med'>
                     Search
                   </Button>
-                  <Link to='/library/:libraryId'>
+                  <Link to={`/library/${Object.values(userId)}`}>
                     <button type="button" className="btn btn-secondary space">Return to library</button>
                   </Link>
                 </Col>

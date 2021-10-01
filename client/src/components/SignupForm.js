@@ -102,9 +102,9 @@ const SignupForm = () => {
         <Form.Group style={spaceStyle}>
           <Form.Label htmlFor="userLibrary">Little library label</Form.Label>
           <Form.Control
-            type="userLibrary"
+            type="text"
             placeholder="Your little library name"
-            name="email"
+            name="userLibrary"
             onChange={handleInputChange}
             value={userFormData.userLibrary}
             required
