@@ -23,12 +23,6 @@ const resolvers = {
   },
 
   Mutation: {
-    addUser: async (parent, { userLibrary, email, password }) => {
-      const user = await User.create({ userLibrary, email, password });
-      const token = signToken(user);
-      return { token, user };
-    },
-
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {
@@ -43,6 +37,24 @@ const resolvers = {
 
       const token = signToken(user);
       return { token, user }
+    },
+
+    addUser: async (parent, { userLibrary, email, password }) => {
+      const user = await User.create({ userLibrary, email, password });
+      const token = signToken(user);
+      return { token, user };
+    },
+
+    saveBook: async (parent, { bookData }, context) => {
+      if (context.user) {
+        const updateUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $push: { savedBooks: bookData } },
+          { new: true }
+        );
+        return updateUser;
+      }
+      throw new AuthenticationError('You need to login to save a book!')
     },
   }
 };

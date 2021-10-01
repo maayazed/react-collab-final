@@ -6,6 +6,14 @@ export const QUERY_ME = gql`
         _id
         userLibrary
         email
+        savedBooks {
+            bookId
+            authors
+            image
+            description
+            title
+            link
+        }
     }
 }
 `
@@ -15,7 +23,14 @@ export const QUERY_USER = gql`
             _id
             userLibrary
             email
-            password
+            savedBooks {
+                bookId
+                authors
+                image
+                description
+                title
+                link
+            }
         }
     }
 `
@@ -26,7 +41,14 @@ export const QUERY_USERS = gql`
             _id
             userLibrary
             email
-            password
+            savedBooks {
+                bookId
+                authors
+                image
+                description
+                title
+                link
+            }
         }
     }
 `;
