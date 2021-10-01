@@ -19,7 +19,8 @@
   "bugs": {
     "url": "https://github.com/maayazed/react-collab-final/issues"
   },
-  "dependencies": {
-    "concurrently": "^6.2.1"
+  "devDependencies": {
+    "@heroku/buildpack-registry": "^1.0.1",
+    "concurrently": "^6.2.2"
   }
 }
