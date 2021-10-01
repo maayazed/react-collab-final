@@ -1,11 +1,6 @@
-import { useQuery } from "@apollo/client";
 import React from "react";
-import { QUERY_LIBRARIES } from "../utils/queries";
-import LibraryList from "../components/LibraryList";
 
 function Homepage() {
-  const { loading, data } = useQuery(QUERY_LIBRARIES);
-  const libraries = data?.libraries || [];
 
   const homeStyle = {
     fontSize: "1.2rem",
@@ -22,7 +17,6 @@ function Homepage() {
           </p>
           <div>
             {/*Could add something else here for when the libraries are loading if we want.*/}
-            <LibraryList libraries={libraries} />
           </div>
         </div>
       </div>

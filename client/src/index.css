@@ -65,7 +65,7 @@ h3 {
   font-style: italic;
   font-family: "Baskervville", serif;
 }
-
+  /* will probably tweak this  */
 .bookcover {
   height: 65px;
   width: 80%;
@@ -76,10 +76,6 @@ h3 {
   font-size: small;
   font-family: "Roboto Slab", sans-serif;
 }
-
-/* .wheat {
-  background-color: rgb(245, 236, 220);
-} */
 
 .blue {
   background-color: #394261;
@@ -92,6 +88,21 @@ h3 {
 .space {
   margin-left: 5px;
 }
+
+.headerLinks {
+  text-decoration: none;
+  
+}
+
+.headerLinks :hover{
+  color: gold;
+}
+
+.headerLinks :active {
+  color: purple;
+}
+
+
 
 @media only screen and (max-width: 768px) {
   .booktitle {
