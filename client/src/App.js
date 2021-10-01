@@ -47,6 +47,7 @@ const client = new ApolloClient({
 
 const homeStyle = {
   border: "solid #a76e0a 5vh",
+  backgroundColor: "#faf0e6",
 };
 
 function App() {
