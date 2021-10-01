@@ -17,7 +17,7 @@ function Header() {
     <Jumbotron fluid style={headerStyle} className="jumbotron">
       <Container className="d-flex justify-content-md-center">
         <Row className="d-flex justify-content-md-center">
-          <Link to="/">
+          <Link className="headerLinks" to="/">
             <p className="fontLink">Little Lending Library</p>
           </Link>
         </Row>

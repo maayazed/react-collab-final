@@ -4,6 +4,14 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 
 import Auth from "../utils/auth";
 
+const styles = {
+  overlayLinks: {
+      color: "brown",
+      textDecoration: "none",
+  }
+}
+
+
 const AppNavbar = () => {
 
   return (
@@ -13,7 +21,7 @@ const AppNavbar = () => {
           <Navbar.Toggle aria-controls="navbar" />
           <Navbar.Collapse id="navbar">
             <Nav className="ml-auto">
-              <Nav.Link as={Link} to="/">
+              <Nav.Link style = {styles.overlayLinks} as={Link} to="/">
                 Search For Books
               </Nav.Link>
               {/* <Nav.Link as={Link} to="/login">
@@ -28,7 +36,7 @@ const AppNavbar = () => {
                   <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
                 </>
               ) : (
-                <Nav.Link as={Link} to="/login">
+                <Nav.Link style = {styles.overlayLinks} as={Link} to="/login">
                   Login/Sign Up
                 </Nav.Link>
               )}

@@ -81,6 +81,21 @@ h3 {
   margin-left: 5px;
 }
 
+.headerLinks {
+  text-decoration: none;
+  
+}
+
+.headerLinks :hover{
+  color: gold;
+}
+
+.headerLinks :active {
+  color: purple;
+}
+
+
+
 @media only screen and (max-width: 768px) {
 
   .booktitle {
@@ -93,4 +108,6 @@ h3 {
   .bookcover {
     height: 80px;
   }
+
+
 }
