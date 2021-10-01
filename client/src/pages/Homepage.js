@@ -1,6 +1,12 @@
 import React from "react";
+import LibraryList from "../components/LibraryList";
+
+import { useQuery } from "@apollo/client";
+import { QUERY_USERS } from "../utils/queries";
 
 function Homepage() {
+  const { data } = useQuery(QUERY_USERS);
+  const users = data?.users || [];
 
   const homeStyle = {
     fontSize: "1.2rem",
@@ -16,7 +22,7 @@ function Homepage() {
             one of your own.
           </p>
           <div>
-            {/*Could add something else here for when the libraries are loading if we want.*/}
+            <LibraryList users={users} />
           </div>
         </div>
       </div>

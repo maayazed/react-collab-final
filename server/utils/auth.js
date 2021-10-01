@@ -27,8 +27,6 @@ module.exports = {
       console.log('Invalid token');
     }
 
-    // send to next endpoint
-    next();
     return req;
   },
   signToken: function ({ userLibrary, email, _id }) {
