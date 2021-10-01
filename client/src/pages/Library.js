@@ -17,6 +17,7 @@ const Library = () => {
     variables: { userId: userId },
   });
 
+  // eslint-disable-next-line no-unused-vars
   const user = data?.user || {};
 
   return (

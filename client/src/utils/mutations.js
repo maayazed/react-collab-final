@@ -39,4 +39,22 @@ export const CREATE_BOOK = gql`
       }
     }
   }
-`;;
+`
+
+export const DELETE_BOOK = gql`
+mutation removeBook($bookId: ID!) {
+  removeBook(bookId: $bookId) {
+    _id
+    userLibrary
+    email
+    savedBooks {
+      bookId
+      authors
+      image
+      description
+      title
+      link
+    }
+  }
+}
+`;

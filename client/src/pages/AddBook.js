@@ -22,6 +22,7 @@ const AddBook = () => {
     variables: { userId: userId },
   });
 
+  // eslint-disable-next-line no-unused-vars
   const user = data?.user || {};
 
   // create state for holding returned google api data
@@ -123,7 +124,7 @@ const AddBook = () => {
                     Search
                   </Button>
                   <Link to={`/library/${Object.values(userId)}`}>
-                    <button type="button" className="btn btn-secondary space">Return to library</button>
+                    <Button type="button" className="btn btn-secondary space">Return to library</Button>
                   </Link>
                 </Col>
               </Form.Row>
@@ -144,7 +145,7 @@ const AddBook = () => {
                       <Col className='col-3 small'>By: {book.authors}</Col>
                       <Col className='col-5'>
                         <Button key='addBook' variant='dark' size='sm'
-                          disabled={addedBookIds?.some((savedBookId) => savedBookId === book.bookId)}
+                          disabled={addedBookIds?.some((addedBookId) => addedBookId === book.bookId)}
                           onClick={() => handleAddBook(book.bookId)}>
                           {addedBookIds?.some((addedBookId) => addedBookId === book.bookId)
                             ? 'Book added!'
