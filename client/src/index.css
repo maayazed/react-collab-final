@@ -1,26 +1,39 @@
-.jumbotron {
+/* Header Component */
+.jumbotronHeader {
   height: 50vh;
   background-color: #c7eff0;
   margin-bottom: 0;
-  /* padding: 10vh; */
-}
-
-.title {
-  display: flex;
-  justify-content: center;
 }
 
 .fontLink {
   font-family: "Prompt", sans-serif;
-  font-size: 15vh;
+  font-size: 10vh;
   color: white;
-  margin-top: 1rem;
+  margin-top: 15vh;
   text-decoration: none;
+  text-align: center;
 }
 
+/* Footer Component */
 .copyright {
   margin-top: 10vh;
   color: white;
+  font-size: 2vh;
+}
+
+/* Library List Page */
+.hovering {
+  color: #5c4033;
+}
+
+.hovering:hover {
+  color: orange;
+}
+
+/* Add Book Page */
+.title {
+  display: flex;
+  justify-content: center;
 }
 
 .fontBody {
@@ -28,7 +41,7 @@
 }
 
 body {
-  font-family: 'Baskervville', serif;
+  font-family: "Baskervville", serif;
 }
 
 h2 {
@@ -39,7 +52,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Baskervville', serif;
+  font-family: "Baskervville", serif;
 }
 
 h3 {
@@ -50,24 +63,19 @@ h3 {
 .small {
   font-size: small;
   font-style: italic;
-  font-family: 'Baskervville', serif;
+  font-family: "Baskervville", serif;
 }
-
+  /* will probably tweak this  */
 .bookcover {
   height: 65px;
   width: 80%;
   margin: 5px 5px 5px 2px;
 }
 
-
 .booktitle {
   font-size: small;
-  font-family: 'Roboto Slab', sans-serif;
+  font-family: "Roboto Slab", sans-serif;
 }
-
-/* .wheat {
-  background-color: rgb(245, 236, 220);
-} */
 
 .blue {
   background-color: #394261;
@@ -97,7 +105,6 @@ h3 {
 
 
 @media only screen and (max-width: 768px) {
-
   .booktitle {
     font-size: x-small;
   }
@@ -108,6 +115,4 @@ h3 {
   .bookcover {
     height: 80px;
   }
-
-
 }

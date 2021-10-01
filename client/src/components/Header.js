@@ -14,10 +14,11 @@ function Header() {
   };
 
   return (
-    <Jumbotron fluid style={headerStyle} className="jumbotron">
+    <Jumbotron fluid style={headerStyle} className="jumbotronHeader">
       <Container className="d-flex justify-content-md-center">
         <Row className="d-flex justify-content-md-center">
           <Link className="headerLinks" to="/">
+
             <p className="fontLink">Little Lending Library</p>
           </Link>
         </Row>

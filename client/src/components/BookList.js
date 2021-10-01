@@ -1,13 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardTitle } from 'reactstrap';
-import { Jumbotron, Container, Button, Col, Row } from 'react-bootstrap';
+import { Jumbotron, Container, Button, Col, Row, Modal } from 'react-bootstrap';
 import '../index.css';
 import Auth from '../utils/auth';
 
-const booksbg = ["#E8A68E", "#FFCDAB", "#CBD9BF", "#ACCC7A5", "#A0C4FF", "#BDB2FF"];
+const booksbg = ["#E8A68E", "#FFCDAB", "#CBD9BF", "#ACC7A5", "#A0C4FF", "#BDB2FF"];
+
+ 
+   //creating the pop-up modal for book details
+   function BookModal(props) {
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Body>
+          <h4>{props.book.title}</h4>
+          <Row><Col xs={3}><img src={props.book.image}></img></Col>
+          <Col className="space">{props.book.description}
+          </Col></Row>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant='secondary' onClick={props.onHide}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
 
 const BookList = ({books}) => {
-    if (!books) {
+  const [modalShow, setModalShow] = useState(false);
+
+  if (!books) {
         return <h3>No Books Yet</h3>
     }
 
@@ -16,6 +41,7 @@ const BookList = ({books}) => {
     const i = Math.floor(Math.random() * booksbg.length);
     return booksbg[i];
   };
+  
 
   // Gets all of the authors in the authors array and 
   const authorsList = (authors) =>  {
@@ -27,8 +53,9 @@ const BookList = ({books}) => {
   }
 
 return (
-    <div>
+    <div className='col'>
     {books && books.map((book)=>(
+            
             <Card variant="primary" className='bookcover' style={{ backgroundColor: getBgColor() }}>
             <Row className="d-flex row align-items-center justify-content-space-evenly spacebefore">
             <Col className='col-4'>
@@ -38,12 +65,14 @@ return (
           <Col className='col-3 small'>By: {authorsList(book.authors)}</Col> 
           <Col className='col-5'>
             <Button 
-              key='bookDetails' variant='secondary' size='sm'> {/*onClick={() => handleAddBook()}*/}
-              {/* {addedBookIds?.some((addedBookId) => addedBookId === book.bookId)
-                ? 'Book removed!'
-                : 'Take book'} */}
-                See details
-            </Button>
+              key='bookDetails' variant='dark' size='sm'  onClick={() => setModalShow(true)}>
+              See details
+          </Button>
+          <BookModal
+            book={book}
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+          />
             <Button 
               key='addBook' className="space" variant='dark' size='sm'>{/*onClick={() => handleAddBook()}*/}
               {/* {addedBookIds?.some((addedBookId) => addedBookId === book.bookId)
