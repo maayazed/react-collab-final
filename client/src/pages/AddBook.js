@@ -11,7 +11,7 @@ import { searchGoogleBooks } from '../utils/API';
 
 import { addBookIds, getAddedBookIds } from '../utils/localStorage';
 
-const booksbg = ["#E8A68E", "#FFCDAB", "#CBD9BF", "#ACCC7A5", "#A0C4FF", "#BDB2FF"];
+const booksbg = ["#E8A68E", "#FFCDAB", "#CBD9BF", "#ACC7A5", "#A0C4FF", "#BDB2FF"];
 
 const AddBook = () => {
   // create state for holding returned google api data
