@@ -36,7 +36,6 @@ type Auth {
 
 type Query {
     me: User
-    user(userId: ID!): User
     users: [User]
 }
 
