@@ -89,7 +89,6 @@ const AddBook = () => {
     }
 
     try {
-      console.log(bookToAdd);
       await addBook({
         variables: { bookData: { ...bookToAdd } }
       });
@@ -144,7 +143,7 @@ const AddBook = () => {
                       <Col className='col-4'><CardTitle key={book.bookId} className='booktitle'>{book.title}</CardTitle></Col>
                       <Col className='col-3 small'>By: {book.authors}</Col>
                       <Col className='col-5'>
-                        <Button key='addBook' variant='dark' size='sm'
+                        <Button variant='dark' size='sm'
                           disabled={addedBookIds?.some((addedBookId) => addedBookId === book.bookId)}
                           onClick={() => handleAddBook(book.bookId)}>
                           {addedBookIds?.some((addedBookId) => addedBookId === book.bookId)
