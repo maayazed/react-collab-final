@@ -22,7 +22,7 @@ Little Lending Library is a MERN stack single-page application built for navigat
 
 ## Installation
 
-To use this application, navigate to the deployed Heroku [site](#).
+To use this application, navigate to the deployed Heroku [site](https://tranquil-chamber-80312.herokuapp.com/).
 
 _To install this application locally yourself, download and clone the files from this repository. Run 'npm run install' to install the packages in the package.jsons, 'npm run build' to create a build, 'npm run seed' to seed the database, and 'npm run develop' to start the application in your local browser._
 
@@ -36,11 +36,25 @@ This is a MERN stack single-page application that uses the following technologie
 
 ## Usage
 
-If you use the application through the deployed [Heroku site](#), navigate to the site and interact with it from there. The site will prompt you to login or sign up before you are able to interact with the libraries.
+If you use the application through the deployed [Heroku site](https://tranquil-chamber-80312.herokuapp.com/), navigate to the site and interact with it from there. The site will prompt you to login or sign up before you are able to interact with the libraries.
 
 Once you're logged in, you can interact with the various little lending libraries — seeing what books they already have, taking books from the inventory, or adding new books using a search feature.
 
-_Screenshots Here_
+_Log In and View the Homepage_
+
+![Library Roof](client/src/img/Home.png)
+
+_See what books are in the Library_
+
+![Library Roof](client/src/img/Books.png)
+
+_Search for Books to Add to the Library_
+
+![Library Roof](client/src/img/Search.png)
+
+_View descriptions of the books in the Library_
+
+![Library Roof](client/src/img/Description.png)
 
 _If the program was cloned, downloaded, and installed instead, get the application running by typing "npm run develop" into the command-line. All features of the application are then accessible through localhost on your browser or other applications._
 
