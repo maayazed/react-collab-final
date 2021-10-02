@@ -4,7 +4,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)![Apollo-GraphQL](https://img.shields.io/badge/-ApolloGraphQL-311C87?style=for-the-badge&logo=apollo-graphql)![GraphQL](https://img.shields.io/badge/-GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white)[![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/) [![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)](https://expressjs.com/)
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)![Apollo-GraphQL](https://img.shields.io/badge/-ApolloGraphQL-311C87?style=for-the-badge&logo=apollo-graphql)![GraphQL](https://img.shields.io/badge/-GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white)[![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)[![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)](https://expressjs.com/)
 
 ## Description
 
@@ -38,9 +38,9 @@ This is a MERN stack single-page application that uses the following technologie
 
 If you use the application through the deployed [Heroku site](https://tranquil-chamber-80312.herokuapp.com/), navigate to the site and interact with it from there. The site will prompt you to login or sign up before you are able to interact with the libraries.
 
-Once you're logged in, you can interact with the various little lending libraries — seeing what books they already have, taking books from the inventory, or adding new books using a search feature.
+Once you're logged in, you can interact with your little lending library — seeing what books it already has, taking books from the inventory, or adding new books using a search feature.
 
-_Log In and View the Homepage_
+_Log in and view the Homepage_
 
 ![Library Roof](client/src/img/Home.png)
 
@@ -48,7 +48,7 @@ _See what books are in the Library_
 
 ![Library Roof](client/src/img/Books.png)
 
-_Search for Books to Add to the Library_
+_Search for books to add to the Library_
 
 ![Library Roof](client/src/img/Search.png)
 
