@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Row, Container } from "react-bootstrap";
 
 import footer from "../img/post.png";
