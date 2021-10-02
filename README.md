@@ -10,7 +10,7 @@
 
 Stay up-to-date on what free books are available in the neighborhood using the Little Lending Library application!
 
-Little Lending Library is a MERN stack single-page application built for navigating local free little lending libraries. Users can login to view different lending library locations, see what books they have in their inventories, and take or add books within the libraries.
+Little Lending Library is a MERN stack single-page application built for navigating local free little lending libraries. Users can login to create their own lending library location, see what books they have in their inventories, and take or add books within the libraries.
 
 ## Table of Contents
 
