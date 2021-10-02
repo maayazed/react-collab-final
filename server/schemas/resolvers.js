@@ -13,7 +13,7 @@ const resolvers = {
       throw new AuthenticationError('You are not signed in');
     },
 
-    user: async (parent, { userId }) => {
+    account: async (parent, { userId }) => {
       return User.findOne({ _id: userId });
     },
 

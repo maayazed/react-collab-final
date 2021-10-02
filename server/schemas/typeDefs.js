@@ -36,7 +36,7 @@ type Auth {
 
 type Query {
     me: User
-    user(userId: ID!): User
+    account(userId: ID!): User
     users: [User]
 }
 
